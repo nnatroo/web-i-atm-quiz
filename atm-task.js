@@ -1,13 +1,12 @@
 /*
-========================================
- JavaScript Practical Task — ATM System
+================================================
+ JavaScript Practical Exam — ATM System
  Rules:
- - Use plain JavaScript only
- - No libraries, no npm
+ - Plain JavaScript only (no libraries)
  - Do NOT change the given object structure
  - Use console.log for output
  - Code must run without errors
-========================================
+================================================
 */
 
 // ===============================
@@ -17,14 +16,22 @@ const atmAccount = {
     owner: "Nugo Natroshvili",
     pin: 1234,
     balance: 500,
+    dailyLimit: 400,
+    failedAttempts: 0,
+    isLocked: false,
     transactions: []
 };
 
 // ===============================
 // TASK 1 — AUTHENTICATION
 // ===============================
-// Write a function authenticate(account, enteredPin)
-// Return true if PIN matches, otherwise false
+// Write authenticate(account, enteredPin)
+//
+// Rules:
+// - If account is locked → return false
+// - If PIN correct → reset failedAttempts, return true
+// - If PIN incorrect → increase failedAttempts
+// - Lock account after 3 failed attempts
 
 function authenticate(account, enteredPin) {
     // TODO
@@ -33,7 +40,7 @@ function authenticate(account, enteredPin) {
 // ===============================
 // TASK 2 — CHECK BALANCE
 // ===============================
-// Write a function checkBalance(account)
+// Write checkBalance(account)
 // Return current balance
 
 function checkBalance(account) {
@@ -43,11 +50,11 @@ function checkBalance(account) {
 // ===============================
 // TASK 3 — DEPOSIT MONEY
 // ===============================
-// Write a function deposit(account, amount)
+// Write deposit(account, amount)
 //
 // Rules:
-// - amount must be a positive number
-// - update account balance
+// - amount must be positive number
+// - update balance
 // - store transaction:
 //   { type: "DEPOSIT", amount: <amount> }
 // - return updated balance
@@ -59,26 +66,37 @@ function deposit(account, amount) {
 // ===============================
 // TASK 4 — WITHDRAW MONEY
 // ===============================
-// Write a function withdraw(account, amount)
+// Write withdraw(account, amount)
 //
 // Rules:
 // - amount must be positive
 // - cannot withdraw more than balance
-// - update account balance
+// - cannot exceed dailyLimit (sum of withdrawals per day)
+// - update balance
 // - store transaction:
 //   { type: "WITHDRAW", amount: <amount> }
-// - if invalid, return "Transaction failed"
+// - if invalid → return "Transaction failed"
 
 function withdraw(account, amount) {
     // TODO
 }
 
 // ===============================
-// TASK 5 — TRANSACTION HISTORY
+// TASK 5 — DAILY LIMIT CALCULATION
 // ===============================
-// Write a function printTransactions(account)
+// Write getTodayWithdrawTotal(account)
+// Return total amount withdrawn today
+
+function getTodayWithdrawTotal(account) {
+    // TODO
+}
+
+// ===============================
+// TASK 6 — TRANSACTION HISTORY
+// ===============================
+// Write printTransactions(account)
 //
-// Output example:
+// Output format:
 // 1. DEPOSIT: +200
 // 2. WITHDRAW: -100
 
@@ -87,22 +105,32 @@ function printTransactions(account) {
 }
 
 // ===============================
-// FINAL TASK
+// TASK 7 — LAST N TRANSACTIONS
 // ===============================
-// Write a function atmMenu(account, pin)
-// Simulate ATM flow using function calls
-// (no prompt required, hardcoded calls allowed)
+// Write printLastTransactions(account, count)
+//
+// Print last <count> transactions
+// If count > available, print all
+
+function printLastTransactions(account, count) {
+    // TODO
+}
+
+// ===============================
+// TASK 8 — ATM FLOW
+// ===============================
+// Write atmMenu(account, pin)
+//
+// Flow example:
+// - authenticate
+// - show balance
+// - deposit
+// - withdraw
+// - show balance
+// - print transactions
 
 function atmMenu(account, pin) {
     // TODO
-    // console.log("=== ATM START ===");
-    // if (!authenticate(account, pin)) {
-    //     console.log("Wrong PIN");
-    //     return;
-    // }
-    //
-    // console.log("PIN correct");
-    // ...
 }
 
 // ===============================
